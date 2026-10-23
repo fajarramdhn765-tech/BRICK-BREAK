@@ -1,0 +1,6 @@
+{
+  "name": "BRICK BREAKER — Arcade Futuristic",
+  "description": "Game arcade BRICK BREAKER futuristik dengan visual 3D spektakuler, audio synth dinamis, kontrol responsif, dan power-ups interaktif.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

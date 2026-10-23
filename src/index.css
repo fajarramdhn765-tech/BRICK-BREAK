@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  html, body, #root {
+    width: 100%;
+    height: 100%;
+    min-height: 100dvh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+  }
+}
+
+.font-arcade {
+  font-family: 'Russo One', sans-serif;
+}
+
+.font-mono-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 3D Text Effects for BRICK */
+.text-3d-brick {
+  font-family: 'Russo One', sans-serif;
+  background: linear-gradient(180deg, #FFF6B7 0%, #F59E0B 45%, #D97706 75%, #B45309 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 0 #78350F)
+          drop-shadow(0 4px 0 #451A03)
+          drop-shadow(0 6px 0 #2E1005)
+          drop-shadow(0 10px 20px rgba(245, 158, 11, 0.6))
+          drop-shadow(0 0 35px rgba(245, 158, 11, 0.4));
+  letter-spacing: 0.05em;
+  transform: perspective(600px) rotateX(8deg);
+}
+
+/* 3D Text Effects for BREAKER */
+.text-3d-breaker {
+  font-family: 'Russo One', sans-serif;
+  background: linear-gradient(180deg, #FFFFFF 0%, #A5F3FC 30%, #06B6D4 65%, #0284C7 90%, #1E3A8A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 0 #0E7490)
+          drop-shadow(0 4px 0 #155E75)
+          drop-shadow(0 6px 0 #164E63)
+          drop-shadow(0 8px 0 #082F49)
+          drop-shadow(0 12px 25px rgba(6, 182, 212, 0.7))
+          drop-shadow(0 0 40px rgba(14, 165, 233, 0.5));
+  letter-spacing: 0.08em;
+  transform: perspective(600px) rotateX(8deg);
+}
+
+/* Metallic Bevel Borders & Glows */
+.arcade-glow-cyan {
+  box-shadow: 0 0 25px rgba(6, 182, 212, 0.5), inset 0 0 15px rgba(6, 182, 212, 0.3);
+}
+
+.arcade-glow-orange {
+  box-shadow: 0 0 25px rgba(249, 115, 22, 0.5), inset 0 0 15px rgba(249, 115, 22, 0.3);
+}
+
+.arcade-glow-gold {
+  box-shadow: 0 0 30px rgba(245, 158, 11, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+/* Glossy Button Sheen Sweep */
+.btn-glossy {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-glossy::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 30%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.05) 70%,
+    transparent 100%
+  );
+  transform: rotate(25deg);
+  pointer-events: none;
+  animation: shine-sweep 3.5s infinite;
+}
+
+@keyframes shine-sweep {
+  0%, 65% {
+    left: -70%;
+  }
+  100% {
+    left: 170%;
+  }
+}
+
+/* Subtle Floating Animation */
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.5deg);
+  }
+}
+
+.animate-float {
+  animation: float-gentle 4s ease-in-out infinite;
+}
+
+/* Pulse Neon Animation */
+@keyframes pulse-neon {
+  0%, 100% {
+    opacity: 0.9;
+    filter: drop-shadow(0 0 25px rgba(6, 182, 212, 0.6));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 45px rgba(6, 182, 212, 0.95)) drop-shadow(0 0 70px rgba(14, 165, 233, 0.4));
+  }
+}
+
+.animate-neon-pulse {
+  animation: pulse-neon 2.8s ease-in-out infinite;
+}
+
+/* Energy Grid Background Lines */
+.energy-grid {
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(to right, rgba(6, 182, 212, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(6, 182, 212, 0.07) 1px, transparent 1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-glossy::after,
+  .animate-float,
+  .animate-neon-pulse {
+    animation: none !important;
+  }
+}
